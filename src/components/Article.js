@@ -4,26 +4,22 @@ import CommentsList from './CommentsList.js'
 class Article extends Component {
     constructor(props) {
         super(props)
-
-        this.state = {
-            isOpen: false
-        }
     }
 
     render() {
-        const { article } = this.props
+        const { article, toggleOpen } = this.props
         return (
             <div>
-                <h3 onClick = {this.handleClick}>{article.title}</h3>
+                <h3 onClick = {toggleOpen}>{article.title}</h3>
                 {this.getBody()}
             </div>
         )
     }
 
     getBody() {
-        if (!this.state.isOpen) return null
+        const {article, isOpen} = this.props
 
-        const {article} = this.props
+        if (!isOpen) return null
 
         return (
             <div>
@@ -31,13 +27,6 @@ class Article extends Component {
                 <CommentsList comments = {article.comments}/>
             </div>
         )
-    }
-
-    handleClick = (ev) => {
-        ev.preventDefault()
-        this.setState({
-            isOpen: !this.state.isOpen
-        })
     }
 }
 
