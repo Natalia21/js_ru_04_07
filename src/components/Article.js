@@ -11,9 +11,15 @@ class Article extends Component {
         return (
             <div>
                 <h3 onClick = {toggleOpen}>{article.title}</h3>
+                <button onClick = {this.deleteArticle}>Delete Article</button>
                 {this.getBody()}
             </div>
         )
+    }
+
+    deleteArticle = () => {
+        const {handleDelete, article} = this.props
+        handleDelete(article.id)
     }
 
     getBody() {

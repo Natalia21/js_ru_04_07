@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import ArticleList from './ArticlesList'
 import DatesRange from './DatesRange'
-
+import SelectFilter from './SelectFilter'
 
 class App extends Component {
     constructor(props) {
@@ -11,8 +11,9 @@ class App extends Component {
     render() {
         return (
             <div>
+                <SelectFilter />
                 <DatesRange />
-                <ArticleList articles={this.props.articles} />
+                <ArticleList />
             </div>
         )
     }
