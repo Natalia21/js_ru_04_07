@@ -23,7 +23,7 @@ class CommentsList extends Component {
     }
 
     getBody() {
-        const {comments, isOpen} = this.props
+        const {comments, isOpen, articleId} = this.props
 
         if (!isOpen) return null
 
@@ -35,14 +35,14 @@ class CommentsList extends Component {
             )
         }
 
-        const commentElements = comments.map(comment => <li key = {comment.id}><Comment comment = {comment} /></li>)
+        const commentElements = comments.map(id => <li key = {id}><Comment id = {id}/></li>)
 
         return (
             <div>
                 <ul>
                     {commentElements}
                 </ul>
-                <CommentForm />
+                <CommentForm articleId = {articleId}/>
             </div>
         )
     }

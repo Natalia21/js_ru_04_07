@@ -30,7 +30,7 @@ class Article extends Component {
         return (
             <div>
                 <p>{article.text}</p>
-                <CommentsList comments = {article.comments}/>
+                <CommentsList comments = {article.comments} articleId = {article.id} />
             </div>
         )
     }

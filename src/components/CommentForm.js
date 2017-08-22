@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
+import { addComment } from '../AC'
 
 const formStyle = {
     textAlign: 'center'
@@ -64,9 +66,20 @@ class CommentForm extends Component {
                 isValidComment: false
             })
         }
-        if (!this.state.isValidComment || !this.isValidUsername) {
+        if (!this.state.isValidComment || !this.state.isValidUsername) {
             return
         }
+
+        const {addComment, articleId} = this.props
+        addComment({
+            user: this.state.username,
+            text: this.state.comment
+        }, articleId)
+
+        this.setState({
+            comment: '',
+            username: ''
+        })
     }
 
     render() {
@@ -82,4 +95,4 @@ class CommentForm extends Component {
     }
 }
 
-export default CommentForm
+export default connect(null, { addComment })(CommentForm)

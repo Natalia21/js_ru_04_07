@@ -1,4 +1,9 @@
-import {DELETE_ARTICLE, SET_DATE_FILTER, SET_SELECT_FILTER} from '../constants'
+import {
+	DELETE_ARTICLE,
+	SET_DATE_FILTER,
+	SET_SELECT_FILTER,
+	ADD_COMMENT
+} from '../constants'
 
 export function deleteArticle(id) {
 	return {
@@ -21,6 +26,16 @@ export function setSelectFilter(selected) {
 		type: SET_SELECT_FILTER,
 		payload: { 
 			selected
+		}
+	}
+}
+
+export function addComment(comment, articleId) {
+	return {
+		type: ADD_COMMENT,
+		payload: {
+			comment,
+			articleId
 		}
 	}
 }
